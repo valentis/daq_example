@@ -12,5 +12,5 @@ DAQ는 다양한 하드웨어 및 소프트웨어 인터페이스에서 작동�
 
 컴파일 및 실행
 실행시 루트 권한이 필요합니다.
-$ g++ -g -ggdb -o daq_example1  daq_example.cpp1 -I/usr/local/include -L/usr/local/lib -ldaq
-$ sudo ./daq_example1
+ $ g++ -g -ggdb -o daq_example1  daq_example.cpp1 -I/usr/local/include -L/usr/local/lib -ldaq
+ $ sudo ./daq_example1
