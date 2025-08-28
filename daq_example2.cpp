@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
 
     while (packet_count < max_packets) {
         // 패킷 획득 (타임아웃 1000ms)
-	ret = daq_acquire(module, handle, 1000, packet_callback, NULL);
+	ret = daq_acquire(module, handle, 1000, packet_callback, &packet_count);
 	if (ret == DAQ_SUCCESS) {
             // 패킷 데이터 처리
             printf("패킷 #%u: 길이=%u\n", packet_count, pkt_hdr.pktlen); 
