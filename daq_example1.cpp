@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     }
 
     // 모듈 찾기
-    module = daq_find_module("pcap"); // errbuf, sizeof(errbuf));
+    module = daq_find_module("pcap"); 
     if (module == NULL) {
         fprintf(stderr, "DAQ 모듈 찾기 실패: %s\n", errbuf);
         daq_unload_modules();
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     config.snaplen = 1518;           // 최대 패킷 길이
     config.timeout = 1000;           // 타임아웃 (ms)
     char iface[] = "eth0";
-    config.name = iface;                 // 문자 배열 사용
+    config.name = iface;             // 문자 배열 사용
 
     // 설정 초기화(initialize)
     ret = module->initialize(&config, &handle, errbuf, sizeof(errbuf));
@@ -83,9 +83,9 @@ int main(int argc, char *argv[])
     const uint8_t *pkt_data;
 
     while (packet_count < max_packets) {
-        // 패킷 획득 (타임아웃 1000ms)
-	ret = daq_acquire(module, handle, 1000, packet_callback, NULL);
-	if (ret == DAQ_SUCCESS) {
+    // 패킷 획득 (타임아웃 1000ms)
+	  ret = daq_acquire(module, handle, 1000, packet_callback, NULL);
+	  if (ret == DAQ_SUCCESS) {
             // 패킷 데이터 처리
             printf("패킷 #%u: 길이=%u\n", packet_count, pkt_hdr.pktlen); 
             packet_count++;
@@ -96,8 +96,6 @@ int main(int argc, char *argv[])
             fprintf(stderr, "패킷 획득 실패: %d\n", ret);
             break;
         }
-
-        // 여기에 패킷 분석 로직 추가 (예: 페이로드 검사)
     }
 
     // 패킷 캡처 중지
